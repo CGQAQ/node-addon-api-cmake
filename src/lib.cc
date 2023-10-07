@@ -56,6 +56,23 @@ static napi_value add(napi_env env, napi_callback_info info)
 	return result;
 }
 
+static napi_value return_promise_string(napi_env env, napi_callback_info info)
+{
+	size_t argc{1};
+	napi_value argv[1]{nullptr};
+	napi_value this_arg{nullptr};
+	void *data{nullptr};
+	NAPI_CALL(env, napi_get_cb_info(env, info, &argc, argv, &this_arg, &data));
+
+	
+	napi_value promise{};
+	napi_deferred deferred{};
+	NAPI_CALL(env, napi_create_promise(env, &deferred, &promise));
+	NAPI_CALL(env, napi_resolve_deferred(env, deferred, argv[0]));
+
+	return promise;
+}
+
 napi_value create_addon(napi_env env)
 {
 	napi_value result;
@@ -84,6 +101,21 @@ napi_value create_addon(napi_env env)
 										   result,
 										   "add",
 										   fn_add));
+
+	napi_value fn_wrap_in_promise;
+	NAPI_CALL(env, napi_create_function(
+					   env,
+					   "wrapInPromise",
+					   NAPI_AUTO_LENGTH,
+					   return_promise_string,
+					   nullptr,
+					   &fn_wrap_in_promise));
+
+	NAPI_CALL(env, napi_set_named_property(
+					   env,
+					   result,
+					   "wrapInPromise",
+					   fn_wrap_in_promise));
 	return result;
 }
 
