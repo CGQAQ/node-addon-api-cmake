@@ -2,7 +2,7 @@
   "scripts": {
     "install": "cmake-js compile",
 
-    "dev": "cmake-js compile && node src/lib.js"
+    "dev": "cmake-js compile --debug && node src/lib.js"
   },
   "packageManager": "yarn@3.6.4",
   "cmake-js": {
