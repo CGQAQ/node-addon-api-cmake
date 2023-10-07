@@ -11,7 +11,7 @@ static napi_value crash(napi_env env, napi_callback_info info)
 
 static napi_value add(napi_env env, napi_callback_info info)
 {
-	constexpr size_t kArgCount{10};
+	static constexpr size_t kArgCount{10};
 	size_t argc{kArgCount};
 	napi_value argv[kArgCount];
 	napi_value this_arg{nullptr};
