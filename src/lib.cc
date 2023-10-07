@@ -56,7 +56,7 @@ static napi_value add(napi_env env, napi_callback_info info)
 	return result;
 }
 
-static napi_value return_promise_string(napi_env env, napi_callback_info info)
+static napi_value wrap_arg_in_promise(napi_env env, napi_callback_info info)
 {
 	size_t argc{1};
 	napi_value argv[1]{nullptr};
@@ -107,7 +107,7 @@ napi_value create_addon(napi_env env)
 					   env,
 					   "wrapInPromise",
 					   NAPI_AUTO_LENGTH,
-					   return_promise_string,
+					   wrap_arg_in_promise,
 					   nullptr,
 					   &fn_wrap_in_promise));
 
