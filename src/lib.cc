@@ -1,7 +1,7 @@
 #include <node_api.h>
 #include <iostream>
 
-#include "lib.h"
+#include "lib.hpp"
 
 static napi_value crash(napi_env env, napi_callback_info info)
 {
