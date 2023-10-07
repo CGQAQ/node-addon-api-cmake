@@ -19,7 +19,6 @@ const bindings = require("bindings")("my_addon.node");
 	console.log("-----------------------------------------------\n\n");
 
 	console.log("-----------------------------------------------");
-
 	console.log("---------test wrapInPromise from C++-----------");
 	const wrapInPromiseResult = await bindings.wrapInPromise("Hello world!");
 	console.log("wrapInPromise from C++, the result: ", wrapInPromiseResult);
