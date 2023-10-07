@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "install": "cmake-js compile",
+
+    "dev": "cmake-js compile && node src/lib.js"
+  },
+  "packageManager": "yarn@3.6.4",
+  "cmake-js": {
+    "runtime": "node",
+    "runtimeVersion": "18.18.0",
+    "arch": "x64",
+    "variables": {
+      "CMAKE_BUILD_TYPE": "Release"
+    }
+  },
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "cmake-js": "^7.2.1"
+  },
+  "devDependencies": {
+    "node-addon-api": "^7.0.0"
+  }
+}

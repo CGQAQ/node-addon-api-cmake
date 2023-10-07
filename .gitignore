@@ -1,0 +1,9 @@
+# yarn3 craps
+.yarn/*
+!.yarn/releases
+
+# cmake-js
+build
+
+# node deps
+node_modules
