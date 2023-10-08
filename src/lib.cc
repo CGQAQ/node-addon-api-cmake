@@ -2,12 +2,20 @@
 
 #include "lib.hpp"
 
+/**
+ * \remarks
+ * Throws an exception from C++.
+*/
 static napi_value crash(napi_env env, napi_callback_info info)
 {
 	napi_throw_error(env, NULL, "Throwing an error from C++, hooray!!");
 	return nullptr;
 }
 
+/**
+ * \remarks
+ * Adds all the arguments passed to the function. up to 10 arguments.
+*/
 static napi_value add(napi_env env, napi_callback_info info)
 {
 	static constexpr size_t kArgCount{10};
@@ -56,6 +64,10 @@ static napi_value add(napi_env env, napi_callback_info info)
 	return result;
 }
 
+/**
+ * \remarks
+ * Wraps the first argument in a promise and returns it.
+*/
 static napi_value wrap_arg_in_promise(napi_env env, napi_callback_info info)
 {
 	size_t argc{1};
